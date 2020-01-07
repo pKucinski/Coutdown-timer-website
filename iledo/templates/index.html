@@ -1,0 +1,151 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Ile do...</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+	<!--  -->
+	<div class="simpleslide100">
+		{% for photo in photo %}
+		<div class="simpleslide100-item bg-img1" style="background-image: url('{{photo.photo.url}}');"></div>
+		{% endfor %}
+	</div>
+
+	<div class="flex-col-c-sb size1 overlay1">
+		<!--  -->
+		<div class="w-full flex-w flex-sb-m p-l-80 p-r-80 p-t-22 p-lr-15-sm">
+
+
+
+		</div>
+
+		<!--  -->
+		<div class="flex-col-c-m p-l-15 p-r-15 p-t-50 p-b-120">
+			<h3 class="l1-txt1 txt-center p-b-35 respon1">
+				{% for date in date %}
+				{{date.text}}
+				{% endfor %}
+			</h3>
+
+			<div class="flex-w flex-c cd100 respon2">
+				<div class="flex-col-c wsize1 m-b-30">
+					<span id="days" class="l1-txt2 p-b-37 days"></span>
+					<span class="m1-txt2 p-r-20">Dni</span>
+				</div>
+
+				<span class="l1-txt2 p-t-15 dis-none-sm">:</span>
+
+				<div class="flex-col-c wsize1 m-b-30">
+					<span id="hours" class="l1-txt2 p-b-37 hours"></span>
+					<span class="m1-txt2 p-r-20">Godzin</span>
+				</div>
+
+				<span class="l1-txt2 p-t-15 dis-none-lg">:</span>
+
+				<div class="flex-col-c wsize1 m-b-30">
+					<span id="minutes" class="l1-txt2 p-b-37 minutes"></span>
+					<span class="m1-txt2 p-r-20">Minut</span>
+				</div>
+
+				<span class="l1-txt2 p-t-15 dis-none-sm">:</span>
+
+				<div class="flex-col-c wsize1 m-b-30">
+					<span id="seconds" class="l1-txt2 p-b-37 seconds"></span>
+					<span class="m1-txt2 p-r-20">Sekund</span>
+				</div>
+			</div>
+		</div>
+
+		<!--  -->
+		<div class="flex-w flex-c-m p-b-35">
+
+			<a target="_blank" href="https://www.instagram.com/inconsiderable/" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-female"></i>
+			</a>
+			<a target="_blank" href="https://www.instagram.com/kucinski_patryk/" class="size3 flex-c-m how-social trans-04 m-r-3 m-l-3 m-b-5">
+				<i class="fa fa-male"></i>
+			</a>
+		</div>
+	</div>
+
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'vendor/countdowntime/moment.min.js' %}"></script>
+	<script src="{% static 'vendor/countdowntime/moment-timezone.min.js' %}"></script>
+	<script src="{% static 'vendor/countdowntime/moment-timezone-with-data.min.js' %}"></script>
+	<script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+
+<!--===============================================================================================-->
+    <script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{% static 'js/main.js' %}"></script>
+
+	<script>
+	// Set the date we're counting down to
+	{% for date in date %}
+	var countDownDate = new Date("{{date.month}} {{date.day}}, {{date.year}}, {{date.hour}}:{{date.minute}}:{{date.second}}").getTime();
+	 {% endfor %}
+
+	// Update the count down every 1 second
+	var x = setInterval(function() {
+
+	  // Get today's date and time
+	  var now = new Date().getTime();
+
+	  // Find the distance between now and the count down date
+	  var distance = countDownDate - now;
+
+	  // Time calculations for days, hours, minutes and seconds
+	  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+	  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+	  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+	  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+	  // Output the result in an element with id="demo"
+
+
+	  document.getElementById("days").innerHTML = days;
+		document.getElementById("hours").innerHTML = hours;
+		document.getElementById("minutes").innerHTML = minutes;
+		document.getElementById("seconds").innerHTML = seconds;
+
+	  // If the count down is over, write some text
+	  if (distance < 0) {
+	    clearInterval(x);
+	    document.getElementById("text").innerHTML = "Już jesteśmy szczęśliwym małżeństwem!";
+	  }
+	}, 1000);
+	</script>
+
+</body>
+</html>
+</html>
